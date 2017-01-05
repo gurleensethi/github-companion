@@ -25,52 +25,25 @@
 
             </android.support.v7.widget.Toolbar>
 
-        </android.support.design.widget.AppBarLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:focusableInTouchMode="true"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:paddingTop="40dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/github_logo_120"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/github"
-                android:textColor="@color/colorPrimary"
-                android:textSize="40sp"/>
-
-            <EditText
-                android:id="@+id/search_edit_text"
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="32dp"
-                android:gravity="center"
-                android:hint="@string/search"
-                android:inputType="textShortMessage"/>
+                app:tabMode="scrollable"
+                app:tabGravity="center"
+                app:tabSelectedTextColor="@color/md_white_1000">
 
-            <ImageButton
-                android:id="@+id/search_image_button"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_marginTop="32dp"
-                android:background="@drawable/button_search"
-                android:padding="16dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_search"/>
+            </android.support.design.widget.TabLayout>
 
-        </LinearLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        </android.support.v4.view.ViewPager>
 
     </android.support.design.widget.CoordinatorLayout>
 

@@ -9,6 +9,8 @@ import android.content.Context;
 public class BaseMVP {
     public interface View {
         Context getAppContext();
+
+        void initViews();
     }
 
     public interface Presenter<T> {

@@ -1,12 +1,10 @@
 package app.com.thetechnocafe.githubcompanion.Home;
 
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
 import app.com.thetechnocafe.githubcompanion.R;
 import butterknife.BindView;
@@ -14,10 +12,10 @@ import butterknife.ButterKnife;
 
 public class HomeActivity extends AppCompatActivity implements HomeContract.View {
 
-    @BindView(R.id.search_edit_text)
-    EditText mSearchEditText;
-    @BindView(R.id.search_image_button)
-    ImageButton mSearchImageButton;
+    @BindView(R.id.view_pager)
+    ViewPager mViewPager;
+    @BindView(R.id.tab_layout)
+    TabLayout mTabLayout;
 
     private HomeContract.Presenter mPresenter;
 
@@ -30,18 +28,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
         mPresenter = new HomePresenter();
         mPresenter.attachView(this);
-
-        initViews();
-    }
-
-    @Override
-    public void startSearchResultActivity(String searchKeyword) {
-
-    }
-
-    @Override
-    public void showError(int messageID) {
-        Toast.makeText(this, messageID, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -49,14 +35,12 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         return getApplicationContext();
     }
 
+    @Override
     public void initViews() {
-        //Configure Button properties
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
-            mSearchImageButton.setElevation(8);
-            mSearchImageButton.setTranslationZ(8);
-        }
+        HomeFragmentPagerAdapter adapter = new HomeFragmentPagerAdapter(getSupportFragmentManager());
+        mViewPager.setAdapter(adapter);
 
-        mSearchImageButton.setOnClickListener(view -> mPresenter.onSearch(mSearchEditText.getText().toString()));
+        mTabLayout.setupWithViewPager(mViewPager);
     }
 
     @Override
