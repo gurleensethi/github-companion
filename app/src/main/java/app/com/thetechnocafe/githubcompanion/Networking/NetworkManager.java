@@ -3,6 +3,7 @@ package app.com.thetechnocafe.githubcompanion.Networking;
 import java.util.List;
 
 import app.com.thetechnocafe.githubcompanion.Models.RepositoriesModel;
+import app.com.thetechnocafe.githubcompanion.Models.RepositoriesResultModel;
 import retrofit2.Retrofit;
 import rx.Observable;
 
@@ -34,7 +35,7 @@ public class NetworkManager {
      * @param search The search keyword passed by the user
      * @return Observable
      **/
-    public Observable<List<RepositoriesModel>> getSearchedRepositories(String search) {
+    public Observable<RepositoriesResultModel> getSearchedRepositories(String search) {
         //Get the retorfit client
         Retrofit mRetrofitClient = GitHubRetrofitClient.getRetrofitClient();
         //Create the gitHub interface from retorfit

@@ -1,7 +1,5 @@
 package app.com.thetechnocafe.githubcompanion.UnifiedSearch.Fragments.RepositoriesSearch;
 
-import android.util.Log;
-
 import app.com.thetechnocafe.githubcompanion.Networking.NetworkManager;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -46,10 +44,10 @@ public class RepositoriesSearchPresenter implements RepositoriesSearchContract.P
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                         repositoriesList -> {
-                            Log.d(TAG, "number of repositories : " + repositoriesList.size());
+
                         },
                         error -> {
-                            Log.e(TAG, error.toString());
+                            error.printStackTrace();
                         }
                 );
     }
