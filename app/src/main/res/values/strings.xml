@@ -3,4 +3,7 @@
     <string name="github">GitHub</string>
     <string name="search">Search</string>
     <string name="keyword_empty">Search keyword cannot be empty.</string>
+    <string name="forks">Forks</string>
+    <string name="language">Language</string>
+    <string name="watchers">Watchers</string>
 </resources>

@@ -219,6 +219,9 @@ public class RepositoriesModel implements Parcelable {
     @SerializedName("subscribers_count")
     @Expose
     private Integer subscribersCount;
+    @SerializedName("owner")
+    @Expose
+    private RepositoriesOwnerModel owner;
     public final static Parcelable.Creator<RepositoriesModel> CREATOR = new Creator<RepositoriesModel>() {
 
 
@@ -303,8 +306,7 @@ public class RepositoriesModel implements Parcelable {
             return (new RepositoriesModel[size]);
         }
 
-    }
-            ;
+    };
 
     public Integer getId() {
         return id;
@@ -856,6 +858,14 @@ public class RepositoriesModel implements Parcelable {
 
     public void setSubscribersCount(Integer subscribersCount) {
         this.subscribersCount = subscribersCount;
+    }
+
+    public RepositoriesOwnerModel getOwner() {
+        return owner;
+    }
+
+    public void setOwner(RepositoriesOwnerModel owner) {
+        this.owner = owner;
     }
 
     public void writeToParcel(Parcel dest, int flags) {
