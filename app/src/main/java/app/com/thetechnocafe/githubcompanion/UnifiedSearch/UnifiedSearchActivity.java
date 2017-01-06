@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -21,6 +22,8 @@ public class UnifiedSearchActivity extends AppCompatActivity implements UnifiedS
     ViewPager mViewPager;
     @BindView(R.id.tab_layout)
     TabLayout mTabLayout;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
 
     private UnifiedSearchContract.Presenter mPresenter;
     public static final String EXTRA_SEARCH_KEYWORD = "search_keyword";
@@ -47,6 +50,11 @@ public class UnifiedSearchActivity extends AppCompatActivity implements UnifiedS
 
     @Override
     public void initViews() {
+        //Set up the toolbar
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(SEARCH_KEYWORD);
+
         //Set up the fragment page adapter for view pager
         SearchFragmentPagerAdapter adapter = new SearchFragmentPagerAdapter(getSupportFragmentManager(), SEARCH_KEYWORD);
         mViewPager.setAdapter(adapter);
