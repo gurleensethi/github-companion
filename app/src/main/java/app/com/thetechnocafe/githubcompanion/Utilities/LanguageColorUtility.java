@@ -32,7 +32,8 @@ public class LanguageColorUtility {
     //Returns color code corresponding to a particular language
     public String getColorCode(String language) {
         try {
-            return colorJSONObject.getString(language);
+            JSONObject colorObject = colorJSONObject.getJSONObject(language);
+            return colorObject.getString("color");
         } catch (Exception e) {
             e.printStackTrace();
 
