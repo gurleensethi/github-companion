@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import app.com.thetechnocafe.githubcompanion.Home.Fragments.GitCommandFragment.GitCommandsFragment;
 import app.com.thetechnocafe.githubcompanion.Home.Fragments.SearchFragment.SearchFragment;
 
 /**
@@ -22,6 +23,9 @@ public class HomeFragmentPagerAdapter extends FragmentStatePagerAdapter {
             case 0: {
                 return SearchFragment.getInstance();
             }
+            case 1: {
+                return GitCommandsFragment.getInstance();
+            }
             default: {
                 return null;
             }
@@ -30,7 +34,7 @@ public class HomeFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 1;
+        return 2;
     }
 
     @Override
@@ -40,7 +44,7 @@ public class HomeFragmentPagerAdapter extends FragmentStatePagerAdapter {
                 return "Search";
             }
             default:
-                return "";
+                return "Git Commands";
         }
     }
 }

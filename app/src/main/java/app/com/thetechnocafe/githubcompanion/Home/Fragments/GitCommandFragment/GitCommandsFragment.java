@@ -25,9 +25,11 @@ public class GitCommandsFragment extends Fragment implements GitCommandsContract
 
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
+
+    private GitCommandsContract.Presenter mPresenter;
     private GitCommandsRecyclerAdapter mGitCommandsRecyclerAdapter;
 
-    public Fragment getInstance() {
+    public static Fragment getInstance() {
         return new GitCommandsFragment();
     }
 
@@ -37,6 +39,9 @@ public class GitCommandsFragment extends Fragment implements GitCommandsContract
         View root = inflater.inflate(R.layout.fragment_git_commands, container, false);
 
         ButterKnife.bind(this, root);
+
+        mPresenter = new GitCommandsPresenter();
+        mPresenter.attachView(this);
 
         return root;
     }
