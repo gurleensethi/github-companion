@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -16,6 +15,7 @@ import app.com.thetechnocafe.githubcompanion.Models.RepositoriesModel;
 import app.com.thetechnocafe.githubcompanion.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by gurleensethi on 06/01/17.
@@ -35,7 +35,7 @@ public class RepositoriesRecyclerAdapter extends RecyclerView.Adapter<Repositori
         @BindView(R.id.full_name_text_view)
         TextView mFullNameTextView;
         @BindView(R.id.owner_image_view)
-        ImageView mOwnerImageView;
+        CircleImageView mOwnerImageView;
         @BindView(R.id.description_text_view)
         TextView mDescriptionTextView;
         @BindView(R.id.language_text_view)
@@ -55,7 +55,7 @@ public class RepositoriesRecyclerAdapter extends RecyclerView.Adapter<Repositori
             //Get the repository
             RepositoriesModel repository = mList.get(position);
 
-            mFullNameTextView.setText(repository.getName());
+            mFullNameTextView.setText(repository.getFullName());
             mDescriptionTextView.setText(repository.getDescription());
             mLanguageTextView.setText(repository.getLanguage());
             mForksTextView.setText(String.valueOf(repository.getForksCount()));

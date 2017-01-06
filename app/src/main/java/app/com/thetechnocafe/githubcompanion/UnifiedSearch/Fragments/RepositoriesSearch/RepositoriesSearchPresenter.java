@@ -43,8 +43,8 @@ public class RepositoriesSearchPresenter implements RepositoriesSearchContract.P
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(
-                        repositoriesList -> {
-
+                        repositoriesResult -> {
+                            mMainView.showRepositories(repositoriesResult.getItems());
                         },
                         error -> {
                             error.printStackTrace();

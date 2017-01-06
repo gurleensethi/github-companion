@@ -4,11 +4,15 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
+import app.com.thetechnocafe.githubcompanion.Models.RepositoriesModel;
 import app.com.thetechnocafe.githubcompanion.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,6 +29,7 @@ public class RepositoriesSearchFragment extends Fragment implements Repositories
     private static final String TAG = RepositoriesSearchFragment.class.getSimpleName();
     private static final String ARG_SEARCH_KEYWORD = "search_keyword";
     private RepositoriesSearchContract.Presenter mPresenter;
+    private RepositoriesRecyclerAdapter mRepositoriesRecyclerAdapter;
 
     public static Fragment getInstance(String searchKeyword) {
         //Create arguments bundle
@@ -59,7 +64,7 @@ public class RepositoriesSearchFragment extends Fragment implements Repositories
 
     @Override
     public void initViews() {
-
+        mRepositoriesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
     @Override
@@ -72,5 +77,20 @@ public class RepositoriesSearchFragment extends Fragment implements Repositories
     public void onDestroy() {
         super.onDestroy();
         mPresenter.onDestroy();
+    }
+
+    @Override
+    public void showRepositories(List<RepositoriesModel> list) {
+        setUpOrRefreshRecyclerView(list);
+    }
+
+    //Set up recycler view (create new adapter if already not created, else refresh it)
+    private void setUpOrRefreshRecyclerView(List<RepositoriesModel> list) {
+        if (mRepositoriesRecyclerAdapter == null) {
+            mRepositoriesRecyclerAdapter = new RepositoriesRecyclerAdapter(getContext(), list);
+            mRepositoriesRecyclerView.setAdapter(mRepositoriesRecyclerAdapter);
+        } else {
+            mRepositoriesRecyclerAdapter.notifyDataSetChanged();
+        }
     }
 }
