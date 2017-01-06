@@ -1,7 +1,11 @@
 package app.com.thetechnocafe.githubcompanion.UnifiedSearch.Fragments.RepositoriesSearch;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,16 +59,48 @@ public class RepositoriesRecyclerAdapter extends RecyclerView.Adapter<Repositori
             //Get the repository
             RepositoriesModel repository = mList.get(position);
 
-            mFullNameTextView.setText(repository.getFullName());
-            mDescriptionTextView.setText(repository.getDescription());
             mLanguageTextView.setText(repository.getLanguage());
             mForksTextView.setText(String.valueOf(repository.getForksCount()));
             mWatchersTextView.setText(String.valueOf(repository.getWatchersCount()));
+
+            //Shorten the description text if its too long
+            String description = repository.getDescription();
+            if (description != null) {
+                if (description.length() > 140) {
+                    String finalDescription = description.substring(0, 140) + "...";
+                    mDescriptionTextView.setText(finalDescription);
+                } else {
+                    mDescriptionTextView.setText(description);
+                }
+            } else {
+                mDescriptionTextView.setText("");
+            }
+
+            //Set the text
+            mFullNameTextView.setText(getStyledSpannableString(repository.getFullName()), TextView.BufferType.SPANNABLE);
 
             //Load the user image with glide
             Glide.with(mContext)
                     .load(repository.getOwner().getAvatarUrl())
                     .into(mOwnerImageView);
+        }
+
+        /**
+         * Change the style of name of user in full name by using spannable strings
+         * (Example : String format -> "username/reponame", changes --> make username of different color)
+         *
+         * @param text Text to be changed.
+         * @return SpannableString Changed spannable string.
+         */
+        private SpannableString getStyledSpannableString(String text) {
+
+            //Get the point to which the style has to changed
+            int splitPoint = text.indexOf("/");
+            //Create new spannable string
+            SpannableString spannableString = new SpannableString(text);
+            //spannableString.setSpan(new ForegroundColorSpan(mContext.getResources().getColor(R.color.md_blue_700)), 0, splitPoint + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spannableString.setSpan(new StyleSpan(Typeface.BOLD), 0, splitPoint + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            return spannableString;
         }
     }
 
