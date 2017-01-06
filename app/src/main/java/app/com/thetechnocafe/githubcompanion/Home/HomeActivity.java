@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import app.com.thetechnocafe.githubcompanion.R;
 import butterknife.BindView;
@@ -41,6 +45,34 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         mViewPager.setAdapter(adapter);
 
         mTabLayout.setupWithViewPager(mViewPager);
+
+        //Set custom icon and text for each tab
+        for (int count = 0; count < adapter.getCount(); count++) {
+            //Create new tab and set corresponding image and text
+            View view = LayoutInflater.from(this).inflate(R.layout.item_tab_layout, mTabLayout, false);
+
+            //Get text view and image view
+            TextView mTabText = (TextView) view.findViewById(R.id.tab_text_view);
+            ImageView mTabImage = (ImageView) view.findViewById(R.id.tab_image_view);
+
+            switch (count) {
+                case 0: {
+                    mTabText.setText("Search");
+                    mTabImage.setImageResource(R.drawable.ic_search);
+                    break;
+                }
+                case 1: {
+                    mTabText.setText("Git Commands");
+                    mTabImage.setImageResource(R.drawable.ic_terminal);
+                    break;
+                }
+            }
+
+            //Get the tab at a position
+            TabLayout.Tab tab = mTabLayout.getTabAt(count);
+            //Set the custom view
+            tab.setCustomView(view);
+        }
     }
 
     @Override
