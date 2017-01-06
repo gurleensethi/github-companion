@@ -1,4 +1,4 @@
-package app.com.thetechnocafe.githubcompanion.UnifiedSearch.Fragments;
+package app.com.thetechnocafe.githubcompanion.UnifiedSearch;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

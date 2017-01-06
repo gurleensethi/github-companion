@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import app.com.thetechnocafe.githubcompanion.R;
-import app.com.thetechnocafe.githubcompanion.UnifiedSearch.Fragments.SearchFragmentPagerAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
