@@ -1,6 +1,7 @@
 package app.com.thetechnocafe.githubcompanion.UnifiedSearch.Fragments.RepositoriesSearch;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
@@ -17,6 +18,7 @@ import java.util.List;
 
 import app.com.thetechnocafe.githubcompanion.Models.RepositoriesModel;
 import app.com.thetechnocafe.githubcompanion.R;
+import app.com.thetechnocafe.githubcompanion.Utilities.LanguageColorUtility;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -62,6 +64,18 @@ public class RepositoriesRecyclerAdapter extends RecyclerView.Adapter<Repositori
             mLanguageTextView.setText(repository.getLanguage());
             mForksTextView.setText(String.valueOf(repository.getForksCount()));
             mWatchersTextView.setText(String.valueOf(repository.getWatchersCount()));
+
+            //Configure the language color
+            if (repository.getLanguage() != null && !repository.getLanguage().equals("")) {
+                String colorInHex = LanguageColorUtility.getInstance(mContext).getColorCode(repository.getLanguage());
+
+                //If color found
+                if (colorInHex != null) {
+                    mLanguageTextView.setTextColor(Color.parseColor(colorInHex));
+                } else {
+                    mLanguageTextView.setTextColor(Color.BLACK);
+                }
+            }
 
             //Shorten the description text if its too long
             String description = repository.getDescription();

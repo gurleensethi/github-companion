@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import app.com.thetechnocafe.githubcompanion.R;
+import app.com.thetechnocafe.githubcompanion.Utilities.GlideUtility;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -27,6 +28,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        GlideUtility.initGlide(this);
 
         ButterKnife.bind(this);
 

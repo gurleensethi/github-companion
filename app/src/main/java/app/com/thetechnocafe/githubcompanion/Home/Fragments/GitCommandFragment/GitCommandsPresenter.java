@@ -57,6 +57,9 @@ public class GitCommandsPresenter implements GitCommandsContract.Presenter {
             while ((line = bufferedReader.readLine()) != null) {
                 stringBuilder.append(line);
             }
+
+            inputStream.close();
+            bufferedReader.close();
         } catch (IOException e) {
             Log.e(TAG, e.toString());
         }
