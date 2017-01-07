@@ -1,6 +1,7 @@
 package app.com.thetechnocafe.githubcompanion.UnifiedSearch.Fragments.RepositoriesSearch;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import java.util.List;
 
@@ -25,6 +29,16 @@ public class RepositoriesSearchFragment extends Fragment implements Repositories
 
     @BindView(R.id.recycler_view)
     RecyclerView mRepositoriesRecyclerView;
+    @BindView(R.id.error_layout)
+    LinearLayout mErrorLinearLayout;
+    @BindView(R.id.progress_layout)
+    LinearLayout mProgressLinearLayout;
+    @BindView(R.id.retry_button)
+    Button mRetryButton;
+    @BindView(R.id.progress_bar)
+    ProgressBar mProgressBar;
+    @BindView(R.id.content_layout)
+    LinearLayout mContentLinearLayout;
 
     private static final String TAG = RepositoriesSearchFragment.class.getSimpleName();
     private static final String ARG_SEARCH_KEYWORD = "search_keyword";
@@ -65,6 +79,10 @@ public class RepositoriesSearchFragment extends Fragment implements Repositories
     @Override
     public void initViews() {
         mRepositoriesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        mRetryButton.setOnClickListener(view -> mPresenter.loadRepositories(getArguments().getString(ARG_SEARCH_KEYWORD)));
+
+        mProgressBar.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.colorPrimaryDark), PorterDuff.Mode.MULTIPLY);
     }
 
     @Override
@@ -84,6 +102,20 @@ public class RepositoriesSearchFragment extends Fragment implements Repositories
         setUpOrRefreshRecyclerView(list);
     }
 
+    @Override
+    public void showErrorLayout() {
+        mErrorLinearLayout.setVisibility(View.VISIBLE);
+        mProgressLinearLayout.setVisibility(View.GONE);
+        mContentLinearLayout.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showProgressLayout() {
+        mProgressLinearLayout.setVisibility(View.VISIBLE);
+        mErrorLinearLayout.setVisibility(View.GONE);
+        mContentLinearLayout.setVisibility(View.GONE);
+    }
+
     //Set up recycler view (create new adapter if already not created, else refresh it)
     private void setUpOrRefreshRecyclerView(List<RepositoriesModel> list) {
         if (mRepositoriesRecyclerAdapter == null) {
@@ -92,5 +124,10 @@ public class RepositoriesSearchFragment extends Fragment implements Repositories
         } else {
             mRepositoriesRecyclerAdapter.notifyDataSetChanged();
         }
+
+        //Show the content layout
+        mContentLinearLayout.setVisibility(View.VISIBLE);
+        mProgressLinearLayout.setVisibility(View.GONE);
+        mErrorLinearLayout.setVisibility(View.GONE);
     }
 }

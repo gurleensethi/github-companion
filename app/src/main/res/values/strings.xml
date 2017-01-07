@@ -6,4 +6,6 @@
     <string name="forks">Forks</string>
     <string name="language">Language</string>
     <string name="watchers">Watchers</string>
+    <string name="error_search_string">Error occurred while getting data</string>
+    <string name="retry">Retry</string>
 </resources>

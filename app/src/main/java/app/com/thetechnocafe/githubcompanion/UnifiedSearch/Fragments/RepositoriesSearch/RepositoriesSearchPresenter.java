@@ -38,6 +38,9 @@ public class RepositoriesSearchPresenter implements RepositoriesSearchContract.P
 
     @Override
     public void loadRepositories(String searchKeyword) {
+        //Show the loading layout
+        mMainView.showProgressLayout();
+
         mRepositoriesSubscription = NetworkManager.getInstance()
                 .getSearchedRepositories(searchKeyword)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -47,6 +50,7 @@ public class RepositoriesSearchPresenter implements RepositoriesSearchContract.P
                             mMainView.showRepositories(repositoriesResult.getItems());
                         },
                         error -> {
+                            mMainView.showErrorLayout();
                             error.printStackTrace();
                         }
                 );

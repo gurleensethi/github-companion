@@ -12,6 +12,10 @@ import app.com.thetechnocafe.githubcompanion.Models.RepositoriesModel;
 public class RepositoriesSearchContract {
     public interface View extends BaseMVP.View {
         void showRepositories(List<RepositoriesModel> list);
+
+        void showErrorLayout();
+
+        void showProgressLayout();
     }
 
     public interface Presenter extends BaseMVP.Presenter<RepositoriesSearchContract.View> {
