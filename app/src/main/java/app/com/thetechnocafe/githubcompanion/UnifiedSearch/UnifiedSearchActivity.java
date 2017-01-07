@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -54,6 +55,9 @@ public class UnifiedSearchActivity extends AppCompatActivity implements UnifiedS
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(SEARCH_KEYWORD);
 
+        //Change back arrow drawable
+
+
         //Set up the fragment page adapter for view pager
         SearchFragmentPagerAdapter adapter = new SearchFragmentPagerAdapter(getSupportFragmentManager(), SEARCH_KEYWORD);
         mViewPager.setAdapter(adapter);
@@ -72,7 +76,7 @@ public class UnifiedSearchActivity extends AppCompatActivity implements UnifiedS
             switch (count) {
                 case 0: {
                     mTabText.setText("Repositories");
-                    mTabImage.setImageResource(R.drawable.ic_search);
+                    mTabImage.setImageResource(R.drawable.ic_file_inbox);
                     break;
                 }
             }
@@ -94,5 +98,17 @@ public class UnifiedSearchActivity extends AppCompatActivity implements UnifiedS
     protected void onDestroy() {
         super.onDestroy();
         mPresenter.onDestroy();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home: {
+                finish();
+                return true;
+            }
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
