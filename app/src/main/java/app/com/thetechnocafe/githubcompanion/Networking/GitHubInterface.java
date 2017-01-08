@@ -1,6 +1,7 @@
 package app.com.thetechnocafe.githubcompanion.Networking;
 
 import app.com.thetechnocafe.githubcompanion.Models.RepositoriesResultModel;
+import app.com.thetechnocafe.githubcompanion.Models.UsersResultModel;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -14,6 +15,11 @@ public interface GitHubInterface {
     Observable<RepositoriesResultModel> getSearchedRepositories(
             @Query("order") String order,
             @Query("sort") String sort,
+            @Query("q") String searchKey
+    );
+
+    @GET("search/users")
+    Observable<UsersResultModel> getSearchedUsers(
             @Query("q") String searchKey
     );
 }

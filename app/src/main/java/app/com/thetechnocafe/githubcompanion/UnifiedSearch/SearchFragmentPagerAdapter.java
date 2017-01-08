@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import app.com.thetechnocafe.githubcompanion.UnifiedSearch.Fragments.RepositoriesSearch.RepositoriesSearchFragment;
+import app.com.thetechnocafe.githubcompanion.UnifiedSearch.Fragments.UsersSearch.UsersSearchFragment;
 
 /**
  * Created by gurleensethi on 06/01/17.
@@ -25,6 +26,9 @@ public class SearchFragmentPagerAdapter extends FragmentPagerAdapter {
             case 0: {
                 return RepositoriesSearchFragment.getInstance(mSearchKeyword);
             }
+            case 1: {
+                return UsersSearchFragment.getInstance(mSearchKeyword);
+            }
             default:
                 return null;
         }
@@ -32,6 +36,6 @@ public class SearchFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 1;
+        return 2;
     }
 }

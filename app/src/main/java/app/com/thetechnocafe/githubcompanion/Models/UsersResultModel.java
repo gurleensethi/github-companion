@@ -22,7 +22,7 @@ public class UsersResultModel implements Parcelable {
     private Boolean incompleteResults;
     @SerializedName("items")
     @Expose
-    private List<Object> items = null;
+    private List<UsersSearchModel> items = null;
     public final static Parcelable.Creator<UsersResultModel> CREATOR = new Creator<UsersResultModel>() {
 
 
@@ -59,11 +59,11 @@ public class UsersResultModel implements Parcelable {
         this.incompleteResults = incompleteResults;
     }
 
-    public List<Object> getItems() {
+    public List<UsersSearchModel> getItems() {
         return items;
     }
 
-    public void setItems(List<Object> items) {
+    public void setItems(List<UsersSearchModel> items) {
         this.items = items;
     }
 

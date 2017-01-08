@@ -1,9 +1,7 @@
 package app.com.thetechnocafe.githubcompanion.Networking;
 
-import java.util.List;
-
-import app.com.thetechnocafe.githubcompanion.Models.RepositoriesModel;
 import app.com.thetechnocafe.githubcompanion.Models.RepositoriesResultModel;
+import app.com.thetechnocafe.githubcompanion.Models.UsersResultModel;
 import retrofit2.Retrofit;
 import rx.Observable;
 
@@ -12,17 +10,19 @@ import rx.Observable;
  */
 
 public class NetworkManager {
-
+    private Retrofit mRetrofit;
+    private GitHubInterface mGitHubInterface;
     private static NetworkManager mInstance = null;
 
     //Singleton class
     private NetworkManager() {
-
+        mRetrofit = GitHubRetrofitClient.getRetrofitClient();
+        mGitHubInterface = mRetrofit.create(GitHubInterface.class);
     }
 
     //Return instance of network manager
     public static NetworkManager getInstance() {
-        if(mInstance == null) {
+        if (mInstance == null) {
             mInstance = new NetworkManager();
         }
         return mInstance;
@@ -36,11 +36,17 @@ public class NetworkManager {
      * @return Observable
      **/
     public Observable<RepositoriesResultModel> getSearchedRepositories(String search) {
-        //Get the retorfit client
-        Retrofit mRetrofitClient = GitHubRetrofitClient.getRetrofitClient();
-        //Create the gitHub interface from retorfit
-        GitHubInterface gitHubInterface = mRetrofitClient.create(GitHubInterface.class);
-        //Return the observable
-        return gitHubInterface.getSearchedRepositories("desc", "stars", search);
+        return mGitHubInterface.getSearchedRepositories("desc", "stars", search);
+    }
+
+    /**
+     * Get all the users correspnding to a particular search keyword
+     * in a observable
+     *
+     * @param search The search keyword passed by the user
+     * @return Observable
+     */
+    public Observable<UsersResultModel> getSearchedUsers(String search) {
+        return mGitHubInterface.getSearchedUsers(search);
     }
 }

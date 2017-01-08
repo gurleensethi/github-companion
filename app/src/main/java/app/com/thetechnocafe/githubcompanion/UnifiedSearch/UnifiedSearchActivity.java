@@ -79,6 +79,11 @@ public class UnifiedSearchActivity extends AppCompatActivity implements UnifiedS
                     mTabImage.setImageResource(R.drawable.ic_file_inbox);
                     break;
                 }
+                case 1: {
+                    mTabText.setText("Users");
+                    mTabImage.setImageResource(R.drawable.ic_user);
+                    break;
+                }
             }
 
             //Get the tab at a position
