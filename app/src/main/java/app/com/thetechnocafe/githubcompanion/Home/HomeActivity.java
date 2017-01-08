@@ -46,6 +46,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     public void initViews() {
         HomeFragmentPagerAdapter adapter = new HomeFragmentPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(adapter);
+        mViewPager.setOffscreenPageLimit(2);
 
         mTabLayout.setupWithViewPager(mViewPager);
 
