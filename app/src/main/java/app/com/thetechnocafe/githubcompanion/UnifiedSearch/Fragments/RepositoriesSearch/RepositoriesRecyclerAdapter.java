@@ -75,6 +75,9 @@ public class RepositoriesRecyclerAdapter extends RecyclerView.Adapter<Repositori
                 } else {
                     mLanguageTextView.setTextColor(Color.BLACK);
                 }
+            } else {
+                mLanguageTextView.setText("-");
+                mLanguageTextView.setTextColor(Color.BLACK);
             }
 
             //Shorten the description text if its too long
