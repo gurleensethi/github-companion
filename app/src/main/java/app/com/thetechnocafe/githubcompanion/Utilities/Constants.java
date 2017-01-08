@@ -5,4 +5,5 @@ package app.com.thetechnocafe.githubcompanion.Utilities;
  */
 
 public class Constants {
+    public static final String GITHUB_REPO_INCOMPLETE = "https://api.github.com/repos/";
 }
