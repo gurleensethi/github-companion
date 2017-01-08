@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import app.com.thetechnocafe.githubcompanion.Home.Fragments.GitCommandFragment.GitCommandsFragment;
 import app.com.thetechnocafe.githubcompanion.Home.Fragments.SearchFragment.SearchFragment;
+import app.com.thetechnocafe.githubcompanion.Home.Fragments.TrendingRepositories.TrendingRepositoriesFragment;
 
 /**
  * Created by gurleensethi on 05/01/17.
@@ -26,6 +27,9 @@ public class HomeFragmentPagerAdapter extends FragmentStatePagerAdapter {
             case 1: {
                 return GitCommandsFragment.getInstance();
             }
+            case 2: {
+                return TrendingRepositoriesFragment.getInstance();
+            }
             default: {
                 return null;
             }
@@ -34,17 +38,6 @@ public class HomeFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
-    }
-
-    @Override
-    public CharSequence getPageTitle(int position) {
-        switch (position) {
-            case 0: {
-                return "Search";
-            }
-            default:
-                return "Git Commands";
-        }
+        return 3;
     }
 }

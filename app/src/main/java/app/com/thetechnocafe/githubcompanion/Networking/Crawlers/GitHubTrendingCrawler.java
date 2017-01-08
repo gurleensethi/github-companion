@@ -100,6 +100,7 @@ public class GitHubTrendingCrawler {
                 repository.setForks(forks);
                 repository.setForksCount(forks);
                 repository.setStargazersCount(stars);
+                repository.setLanguage(language);
                 repository.setUrl(Constants.GITHUB_REPO_INCOMPLETE + fullName);
 
                 repoList.add(repository);

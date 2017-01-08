@@ -69,6 +69,11 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                     mTabImage.setImageResource(R.drawable.ic_terminal);
                     break;
                 }
+                case 2: {
+                    mTabText.setText("Trending Repos");
+                    mTabImage.setImageResource(R.drawable.ic_flame);
+                    break;
+                }
             }
 
             //Get the tab at a position

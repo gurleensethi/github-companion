@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import app.com.thetechnocafe.githubcompanion.Models.RepositoriesModel;
+import app.com.thetechnocafe.githubcompanion.Models.RepositoriesOwnerModel;
 import app.com.thetechnocafe.githubcompanion.R;
 import app.com.thetechnocafe.githubcompanion.Utilities.LanguageColorUtility;
 import butterknife.BindView;
@@ -96,10 +97,13 @@ public class RepositoriesRecyclerAdapter extends RecyclerView.Adapter<Repositori
             //Set the text
             mFullNameTextView.setText(getStyledSpannableString(repository.getFullName()), TextView.BufferType.SPANNABLE);
 
-            //Load the user image with glide
-            Glide.with(mContext)
-                    .load(repository.getOwner().getAvatarUrl())
-                    .into(mOwnerImageView);
+            //Load the owner image with glide
+            RepositoriesOwnerModel owner = repository.getOwner();
+            if(owner != null) {
+                Glide.with(mContext)
+                        .load(repository.getOwner().getAvatarUrl())
+                        .into(mOwnerImageView);
+            }
         }
 
         /**
