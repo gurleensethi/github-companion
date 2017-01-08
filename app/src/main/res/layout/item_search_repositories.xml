@@ -140,16 +140,16 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_binoculars"/>
+                    android:src="@drawable/ic_star"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/watchers"
+                    android:text="@string/stars"
                     android:textSize="12sp"/>
 
                 <TextView
-                    android:id="@+id/watchers_count_text_view"
+                    android:id="@+id/stars_count_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"

@@ -48,8 +48,8 @@ public class RepositoriesRecyclerAdapter extends RecyclerView.Adapter<Repositori
         TextView mLanguageTextView;
         @BindView(R.id.forks_count_text_view)
         TextView mForksTextView;
-        @BindView(R.id.watchers_count_text_view)
-        TextView mWatchersTextView;
+        @BindView(R.id.stars_count_text_view)
+        TextView mStarsTextView;
 
         public RepositoriesViewHolder(View view) {
             super(view);
@@ -63,7 +63,7 @@ public class RepositoriesRecyclerAdapter extends RecyclerView.Adapter<Repositori
 
             mLanguageTextView.setText(repository.getLanguage());
             mForksTextView.setText(String.valueOf(repository.getForksCount()));
-            mWatchersTextView.setText(String.valueOf(repository.getWatchersCount()));
+            mStarsTextView.setText(String.valueOf(repository.getStargazersCount()));
 
             //Configure the language color
             if (repository.getLanguage() != null && !repository.getLanguage().equals("")) {
