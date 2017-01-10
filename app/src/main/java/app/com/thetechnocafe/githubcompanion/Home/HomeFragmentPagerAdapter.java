@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import app.com.thetechnocafe.githubcompanion.Home.Fragments.GitCommandFragment.GitCommandsFragment;
 import app.com.thetechnocafe.githubcompanion.Home.Fragments.SearchFragment.SearchFragment;
 import app.com.thetechnocafe.githubcompanion.Home.Fragments.TrendingRepositories.TrendingRepositoriesFragment;
+import app.com.thetechnocafe.githubcompanion.Home.Fragments.TrendingUsers.TrendingDevelopersFragment;
 
 /**
  * Created by gurleensethi on 05/01/17.
@@ -30,6 +31,9 @@ public class HomeFragmentPagerAdapter extends FragmentStatePagerAdapter {
             case 2: {
                 return TrendingRepositoriesFragment.getInstance();
             }
+            case 3: {
+                return TrendingDevelopersFragment.getInstance();
+            }
             default: {
                 return null;
             }
@@ -38,6 +42,6 @@ public class HomeFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 }

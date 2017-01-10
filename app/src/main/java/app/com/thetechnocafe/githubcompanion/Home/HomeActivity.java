@@ -46,7 +46,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     public void initViews() {
         HomeFragmentPagerAdapter adapter = new HomeFragmentPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(adapter);
-        mViewPager.setOffscreenPageLimit(2);
+        mViewPager.setOffscreenPageLimit(3);
 
         mTabLayout.setupWithViewPager(mViewPager);
 
@@ -73,6 +73,11 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                 case 2: {
                     mTabText.setText("Trending Repos");
                     mTabImage.setImageResource(R.drawable.ic_flame);
+                    break;
+                }
+                case 3: {
+                    mTabText.setText("Trending Devs");
+                    mTabImage.setImageResource(R.drawable.ic_progress_report);
                     break;
                 }
             }

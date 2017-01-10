@@ -5,7 +5,9 @@ import java.util.List;
 import app.com.thetechnocafe.githubcompanion.Models.RepositoriesModel;
 import app.com.thetechnocafe.githubcompanion.Models.RepositoriesResultModel;
 import app.com.thetechnocafe.githubcompanion.Models.UsersResultModel;
+import app.com.thetechnocafe.githubcompanion.Models.UsersSearchModel;
 import app.com.thetechnocafe.githubcompanion.Networking.Crawlers.GitHubTrendingCrawler;
+import app.com.thetechnocafe.githubcompanion.Networking.Crawlers.GitHubTrendingDevelopersCrawler;
 import retrofit2.Retrofit;
 import rx.Observable;
 
@@ -63,5 +65,16 @@ public class NetworkManager {
     public Observable<List<RepositoriesModel>> getTrendingRepositories(String time) {
         return GitHubTrendingCrawler.getInstance()
                 .getTrendingRepositoriesObservable(time);
+    }
+
+    /**
+     * Get all the trending developers list in a observable
+     *
+     * @param time The time period to get trending repos
+     * @return Observable
+     */
+    public Observable<List<UsersSearchModel>> getTrendingDevelopers(String time) {
+        return GitHubTrendingDevelopersCrawler.getInstance()
+                .getTrendingUsersObservable(time);
     }
 }

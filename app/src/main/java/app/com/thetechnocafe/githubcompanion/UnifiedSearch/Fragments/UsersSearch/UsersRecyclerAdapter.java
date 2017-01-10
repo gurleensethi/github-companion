@@ -36,8 +36,6 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
         CircleImageView mAvatarImageView;
         @BindView(R.id.login_text_view)
         TextView mLoginTextView;
-        @BindView(R.id.score_text_view)
-        TextView mScoreTextView;
 
         UsersViewHolder(View view) {
             super(view);
@@ -54,10 +52,6 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
                     .into(mAvatarImageView);
 
             mLoginTextView.setText(user.getLogin());
-
-            //Reduce the score to 2 decimal places
-            double score2DecimalPlaces = ((int) (user.getScore() * 100)) / 100.0;
-            mScoreTextView.setText(String.valueOf(score2DecimalPlaces));
         }
     }
 
