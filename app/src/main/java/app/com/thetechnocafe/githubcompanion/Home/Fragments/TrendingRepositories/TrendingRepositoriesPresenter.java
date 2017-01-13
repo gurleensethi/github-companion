@@ -19,7 +19,7 @@ public class TrendingRepositoriesPresenter implements TrendingRepositoriesContra
         mMainView.showProgressLayout();
 
         mRepositoriesSubscription = NetworkManager.getInstance()
-                .getTrendingRepositories("weekly")
+                .getTrendingRepositories(searchKeyword)
                 .subscribe(
                         repositoriesResult -> {
                             mMainView.showRepositories(repositoriesResult);

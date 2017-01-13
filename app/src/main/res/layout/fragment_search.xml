@@ -12,18 +12,18 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:paddingTop="40dp"
-            android:src="@drawable/github_logo_120"/>
+            android:src="@drawable/ic_git_logo"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/github"
+            android:text="@string/github_companion"
             android:textColor="@color/colorPrimary"
-            android:textSize="40sp"/>
+            android:textSize="24sp"/>
 
         <EditText
             android:id="@+id/search_edit_text"
@@ -35,18 +35,19 @@
             android:gravity="center"
             android:hint="@string/search"
             android:inputType="textShortMessage"
-            android:padding="16dp"/>
+            android:padding="16dp"
+            android:theme="@style/EditTextCustom"/>
 
         <ImageButton
             android:id="@+id/search_image_button"
             android:layout_width="64dp"
             android:layout_height="64dp"
+            android:layout_marginBottom="32dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/button_search"
             android:padding="16dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_search"
-            android:layout_marginBottom="32dp"/>
+            android:src="@drawable/ic_search"/>
 
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

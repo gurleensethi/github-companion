@@ -9,4 +9,7 @@
     <string name="error_search_string">Error occurred while getting data</string>
     <string name="retry">Retry</string>
     <string name="stars">Stars</string>
+    <string name="time">Time</string>
+    <string name="filter">Filter</string>
+    <string name="github_companion">GitHub Companion</string>
 </resources>

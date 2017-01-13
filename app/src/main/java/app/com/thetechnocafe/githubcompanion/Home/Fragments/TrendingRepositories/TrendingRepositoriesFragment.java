@@ -16,10 +16,12 @@ import android.widget.ProgressBar;
 
 import java.util.List;
 
+import app.com.thetechnocafe.githubcompanion.Dialogs.TrendingFilterOptionsDialogFragment;
 import app.com.thetechnocafe.githubcompanion.Models.RepositoriesModel;
 import app.com.thetechnocafe.githubcompanion.R;
 import app.com.thetechnocafe.githubcompanion.UnifiedSearch.Fragments.RepositoriesSearch.RepositoriesRecyclerAdapter;
 import app.com.thetechnocafe.githubcompanion.UnifiedSearch.Fragments.RepositoriesSearch.RepositoriesSearchFragment;
+import app.com.thetechnocafe.githubcompanion.Utilities.Constants;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -41,10 +43,14 @@ public class TrendingRepositoriesFragment extends Fragment implements TrendingRe
     ProgressBar mProgressBar;
     @BindView(R.id.content_layout)
     LinearLayout mContentLinearLayout;
+    @BindView(R.id.filter_linear_layout)
+    LinearLayout mFilterLinearLayout;
 
     private static final String TAG = RepositoriesSearchFragment.class.getSimpleName();
+    private static final String FILTER_DIALOG_TAG = "filterdialog";
     private TrendingRepositoriesContract.Presenter mPresenter;
     private RepositoriesRecyclerAdapter mRepositoriesRecyclerAdapter;
+    private static int DIALOG_SELECTED_OPTION = 0;
 
     public static Fragment getInstance() {
         //Create arguments bundle
@@ -83,6 +89,16 @@ public class TrendingRepositoriesFragment extends Fragment implements TrendingRe
         mRetryButton.setOnClickListener(view -> mPresenter.loadRepositories("weekly"));
 
         mProgressBar.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.colorPrimaryDark), PorterDuff.Mode.MULTIPLY);
+
+        mFilterLinearLayout.setOnClickListener(view -> {
+            //Show the trending filters dialog fragment
+            TrendingFilterOptionsDialogFragment dialogFragment = TrendingFilterOptionsDialogFragment.getInstance(DIALOG_SELECTED_OPTION);
+            dialogFragment.setFragmentCallback(selectedTime -> {
+                DIALOG_SELECTED_OPTION = selectedTime;
+                mPresenter.loadRepositories(Constants.TIME_OPTIONS[selectedTime]);
+            });
+            dialogFragment.show(getActivity().getSupportFragmentManager(), FILTER_DIALOG_TAG);
+        });
     }
 
     @Override
