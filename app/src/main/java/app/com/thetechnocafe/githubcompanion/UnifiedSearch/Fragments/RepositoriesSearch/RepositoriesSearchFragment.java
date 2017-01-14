@@ -1,7 +1,9 @@
 package app.com.thetechnocafe.githubcompanion.UnifiedSearch.Fragments.RepositoriesSearch;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -121,6 +123,14 @@ public class RepositoriesSearchFragment extends Fragment implements Repositories
         if (mRepositoriesRecyclerAdapter == null) {
             mRepositoriesRecyclerAdapter = new RepositoriesRecyclerAdapter(getContext(), list);
             mRepositoriesRecyclerView.setAdapter(mRepositoriesRecyclerAdapter);
+
+            //Add click listener for a single item
+            mRepositoriesRecyclerAdapter.setOnRepoClickListener(repository -> {
+                //TODO:Remove this from production code
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(repository.getHtmlUrl()));
+                startActivity(intent);
+            });
         } else {
             mRepositoriesRecyclerAdapter.notifyDataSetChanged();
         }

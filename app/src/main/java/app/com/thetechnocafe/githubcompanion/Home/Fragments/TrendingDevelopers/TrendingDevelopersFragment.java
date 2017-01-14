@@ -71,7 +71,6 @@ public class TrendingDevelopersFragment extends Fragment implements TrendingDeve
         mPresenter = new TrendingDevelopersPresenter();
         mPresenter.attachView(this);
         mPresenter.loadUsers("weekly");
-
         return root;
     }
 

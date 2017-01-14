@@ -32,13 +32,19 @@ public class RepositoriesRecyclerAdapter extends RecyclerView.Adapter<Repositori
 
     private List<RepositoriesModel> mList;
     private Context mContext;
+    private OnRepoClickListener mRepoClickListener;
+
+    //Interface for onClick callback
+    public interface OnRepoClickListener {
+        void onRepoClicked(RepositoriesModel model);
+    }
 
     public RepositoriesRecyclerAdapter(Context context, List<RepositoriesModel> list) {
         mContext = context;
         mList = list;
     }
 
-    class RepositoriesViewHolder extends RecyclerView.ViewHolder {
+    class RepositoriesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @BindView(R.id.full_name_text_view)
         TextView mFullNameTextView;
         @BindView(R.id.owner_image_view)
@@ -51,14 +57,17 @@ public class RepositoriesRecyclerAdapter extends RecyclerView.Adapter<Repositori
         TextView mForksTextView;
         @BindView(R.id.stars_count_text_view)
         TextView mStarsTextView;
+        private int mPosition;
 
         public RepositoriesViewHolder(View view) {
             super(view);
-
             ButterKnife.bind(this, view);
+            view.setOnClickListener(this);
         }
 
         public void bindData(int position) {
+            mPosition = position;
+
             //Get the repository
             RepositoriesModel repository = mList.get(position);
 
@@ -99,7 +108,7 @@ public class RepositoriesRecyclerAdapter extends RecyclerView.Adapter<Repositori
 
             //Load the owner image with glide
             RepositoriesOwnerModel owner = repository.getOwner();
-            if(owner != null) {
+            if (owner != null) {
                 Glide.with(mContext)
                         .load(repository.getOwner().getAvatarUrl())
                         .into(mOwnerImageView);
@@ -111,7 +120,7 @@ public class RepositoriesRecyclerAdapter extends RecyclerView.Adapter<Repositori
          * (Example : String format -> "username/reponame", changes --> make username of different color)
          *
          * @param text Text to be changed.
-         * @return SpannableString Changed spannable string.
+         * @return spannableString Changed spannable string.
          */
         private SpannableString getStyledSpannableString(String text) {
 
@@ -122,6 +131,14 @@ public class RepositoriesRecyclerAdapter extends RecyclerView.Adapter<Repositori
             //spannableString.setSpan(new ForegroundColorSpan(mContext.getResources().getColor(R.color.md_blue_700)), 0, splitPoint + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             spannableString.setSpan(new StyleSpan(Typeface.BOLD), 0, splitPoint + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             return spannableString;
+        }
+
+        @Override
+        public void onClick(View view) {
+            //Check if on click listener is registered
+            if (mRepoClickListener != null) {
+                mRepoClickListener.onRepoClicked(mList.get(mPosition));
+            }
         }
     }
 
@@ -139,5 +156,10 @@ public class RepositoriesRecyclerAdapter extends RecyclerView.Adapter<Repositori
     @Override
     public int getItemCount() {
         return mList.size();
+    }
+
+    //Register repo click listener
+    public void setOnRepoClickListener(OnRepoClickListener listener) {
+        mRepoClickListener = listener;
     }
 }

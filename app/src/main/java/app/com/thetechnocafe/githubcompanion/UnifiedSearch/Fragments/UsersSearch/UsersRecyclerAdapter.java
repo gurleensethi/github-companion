@@ -25,25 +25,34 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
 
     private Context mContext;
     private List<UsersSearchModel> mList;
+    private OnUserClickListener mUserClickListener;
+
+    //Interface for on click callbacks
+    public interface OnUserClickListener {
+        public void onUserClicked(UsersSearchModel model);
+    }
 
     public UsersRecyclerAdapter(Context context, List<UsersSearchModel> list) {
         mContext = context;
         mList = list;
     }
 
-    class UsersViewHolder extends RecyclerView.ViewHolder {
+    class UsersViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @BindView(R.id.avatar_circle_image_view)
         CircleImageView mAvatarImageView;
         @BindView(R.id.login_text_view)
         TextView mLoginTextView;
+        private int mPosition;
 
         UsersViewHolder(View view) {
             super(view);
-
             ButterKnife.bind(this, view);
+            view.setOnClickListener(this);
         }
 
         void bindData(int position) {
+            mPosition = position;
+
             UsersSearchModel user = mList.get(position);
 
             //Load the avatar image with glide
@@ -52,6 +61,14 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
                     .into(mAvatarImageView);
 
             mLoginTextView.setText(user.getLogin());
+        }
+
+        @Override
+        public void onClick(View view) {
+            //Check if on user click listener is registered
+            if (mUserClickListener != null) {
+                mUserClickListener.onUserClicked(mList.get(mPosition));
+            }
         }
     }
 
@@ -69,5 +86,9 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
     @Override
     public int getItemCount() {
         return mList.size();
+    }
+
+    public void setOnUserClickListener(OnUserClickListener listener) {
+        mUserClickListener = listener;
     }
 }

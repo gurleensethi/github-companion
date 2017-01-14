@@ -1,7 +1,9 @@
 package app.com.thetechnocafe.githubcompanion.UnifiedSearch.Fragments.UsersSearch;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -121,6 +123,13 @@ public class UsersSearchFragment extends Fragment implements UsersSearchContract
         if (mUsersRecyclerAdapter == null) {
             mUsersRecyclerAdapter = new UsersRecyclerAdapter(getContext(), list);
             mRepositoriesRecyclerView.setAdapter(mUsersRecyclerAdapter);
+
+            //Register on click listener
+            mUsersRecyclerAdapter.setOnUserClickListener(user -> {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(user.getHtmlUrl()));
+                startActivity(intent);
+            });
         } else {
             mUsersRecyclerAdapter.notifyDataSetChanged();
         }
