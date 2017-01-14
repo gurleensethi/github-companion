@@ -1,4 +1,4 @@
-package app.com.thetechnocafe.githubcompanion.Home.Fragments.TrendingUsers;
+package app.com.thetechnocafe.githubcompanion.Home.Fragments.TrendingDevelopers;
 
 import java.util.List;
 

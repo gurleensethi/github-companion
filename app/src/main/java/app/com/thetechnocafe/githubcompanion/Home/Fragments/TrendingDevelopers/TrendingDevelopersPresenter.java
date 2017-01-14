@@ -1,4 +1,4 @@
-package app.com.thetechnocafe.githubcompanion.Home.Fragments.TrendingUsers;
+package app.com.thetechnocafe.githubcompanion.Home.Fragments.TrendingDevelopers;
 
 import app.com.thetechnocafe.githubcompanion.Networking.NetworkManager;
 import rx.Subscription;
@@ -18,7 +18,7 @@ public class TrendingDevelopersPresenter implements TrendingDevelopersContract.P
         mMainView.showProgressLayout();
 
         mUsersSubscription = NetworkManager.getInstance()
-                .getTrendingDevelopers("weekly")
+                .getTrendingDevelopers(searchKeyword)
                 .subscribe(
                         usersResult -> {
                             mMainView.showDevelopers(usersResult);

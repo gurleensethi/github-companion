@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import app.com.thetechnocafe.githubcompanion.Home.Fragments.GitCommandFragment.GitCommandsFragment;
 import app.com.thetechnocafe.githubcompanion.Home.Fragments.SearchFragment.SearchFragment;
 import app.com.thetechnocafe.githubcompanion.Home.Fragments.TrendingRepositories.TrendingRepositoriesFragment;
-import app.com.thetechnocafe.githubcompanion.Home.Fragments.TrendingUsers.TrendingDevelopersFragment;
+import app.com.thetechnocafe.githubcompanion.Home.Fragments.TrendingDevelopers.TrendingDevelopersFragment;
 
 /**
  * Created by gurleensethi on 05/01/17.
