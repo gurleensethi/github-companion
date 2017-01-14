@@ -126,6 +126,7 @@ public class UsersSearchFragment extends Fragment implements UsersSearchContract
 
             //Register on click listener
             mUsersRecyclerAdapter.setOnUserClickListener(user -> {
+                //TODO: Remove from production code
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(user.getHtmlUrl()));
                 startActivity(intent);
