@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GitHubCompanion.iml" filepath="$PROJECT_DIR$/GitHubCompanion.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/github-companion.iml" filepath="$PROJECT_DIR$/github-companion.iml" />
     </modules>
   </component>
 </project>
