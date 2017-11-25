@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="vertical">
@@ -12,7 +13,8 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
         android:text="commit"
-        android:textColor="@color/md_blue_500"
+        android:textStyle="bold"
+        android:textColor="@color/md_green_A700"
         android:textSize="24sp"/>
 
     <TextView
@@ -22,7 +24,9 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
-        android:text="Used to commit changes in htseinjg jnsknd jgnns dnksdn kngksdn ngkn skdng knsdkn kjgnk sdng"/>
+        android:text="Used to commit changes in htseinjg jnsknd jgnns dnksdn kngksdn ngkn skdng knsdkn kjgnk sdng"
+        android:textStyle="italic"/>
+
 
     <View
         android:layout_width="match_parent"

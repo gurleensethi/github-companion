@@ -8,13 +8,14 @@
         android:id="@+id/content_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/back2">
 
         <LinearLayout
             android:id="@+id/filter_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/md_blue_100"
+            android:background="@color/md_light_green_A100"
             android:clickable="true"
             android:foreground="?attr/selectableItemBackground"
             android:gravity="center"
@@ -25,6 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/filter"
+                android:textStyle="bold"
                 android:textAllCaps="true"
                 android:textColor="@color/md_black_1000"/>
 
@@ -39,7 +41,8 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/back3">
 
         </android.support.v7.widget.RecyclerView>
     </LinearLayout>

@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GitHubCompanion.iml" filepath="$PROJECT_DIR$/GitHubCompanion.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/github-companion.iml" filepath="$PROJECT_DIR$/github-companion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/github-companion-master.iml" filepath="$PROJECT_DIR$/github-companion-master.iml" />
     </modules>
   </component>
 </project>

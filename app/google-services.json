@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "992353913683",
+    "firebase_url": "https://github-companion-master.firebaseio.com",
+    "project_id": "github-companion-master",
+    "storage_bucket": "github-companion-master.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:992353913683:android:1ebe3a774c05f65a",
+        "android_client_info": {
+          "package_name": "app.com.thetechnocafe.githubcompanion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "992353913683-s98fcikt0al1sa369cvcg2n3jmgc2258.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYbGwkjqT02hCkYBt6BB17jMMwfz6ZMXo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

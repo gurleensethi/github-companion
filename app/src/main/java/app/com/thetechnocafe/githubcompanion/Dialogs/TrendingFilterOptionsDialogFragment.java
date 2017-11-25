@@ -17,9 +17,6 @@ import app.com.thetechnocafe.githubcompanion.Utilities.Constants;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by gurleensethi on 12/01/17.
- */
 
 public class TrendingFilterOptionsDialogFragment extends android.support.v4.app.DialogFragment {
     //Interface for callback
