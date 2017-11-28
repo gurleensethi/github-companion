@@ -26,15 +26,17 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="8"
                 android:text="Hello"
-                android:textColor="@color/md_blue_500"
-                android:textSize="20sp" />
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:textColor="@color/md_light_green_A700"
+                android:textSize="23sp"/>
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/owner_image_view"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginLeft="16dp"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"/>
 
         </LinearLayout>
 
@@ -44,15 +46,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="sans-serif-light"
-            android:layout_marginBottom="16dp"
             android:text="This is a long text for testing purposes hello lorem ipsum"
-            android:textSize="14sp" />
+            android:textStyle="bold"
+            android:textSize="17sp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:visibility="gone"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -66,13 +67,15 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_computing_code" />
+                    android:src="@drawable/ic_computing_code"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/language"
-                    android:textSize="12sp" />
+                    android:textStyle="italic"
+                    android:textColor="@color/md_blue_A400"
+                    android:textSize="15sp"/>
 
                 <TextView
                     android:id="@+id/language_text_view"
@@ -80,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Python"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"/>
 
             </LinearLayout>
 
@@ -91,7 +94,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
                 android:alpha="0.5"
-                android:background="@android:color/darker_gray" />
+                android:background="@android:color/darker_gray"/>
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -104,20 +107,24 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_code_fork_symbol" />
+                    android:src="@drawable/ic_code_fork_symbol"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/forks"
-                    android:textSize="12sp" />
+                    android:textStyle="italic"
+                    android:textColor="@color/md_light_green_A700"
+                    android:textSize="15sp"/>
 
                 <TextView
                     android:id="@+id/forks_count_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="20"
-                    android:textSize="16sp" />
+                    android:textStyle="bold"
+                    android:textColor="@color/md_teal_A700"
+                    android:textSize="17sp"/>
 
             </LinearLayout>
 
@@ -128,7 +135,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
                 android:alpha="0.5"
-                android:background="@android:color/darker_gray" />
+                android:background="@android:color/darker_gray"/>
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -141,20 +148,24 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_star" />
+                    android:src="@drawable/ic_star"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/stars"
-                    android:textSize="12sp" />
+                    android:textStyle="italic"
+                    android:textColor="@color/md_purple_A400"
+                    android:textSize="16sp"/>
 
                 <TextView
                     android:id="@+id/stars_count_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textSize="16sp" />
+                    android:textStyle="bold"
+                    android:textColor="@color/md_blue_A400"
+                    android:textSize="16sp"/>
 
             </LinearLayout>
 

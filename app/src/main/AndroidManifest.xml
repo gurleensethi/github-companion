@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="app.com.thetechnocafe.githubcompanion">
+    package="app.com.thetechnocafe.githubcompanion">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
     <application
         android:allowBackup="true"
@@ -10,15 +11,20 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Home.HomeActivity">
+        <activity android:name=".Home.HomeActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".UnifiedSearch.UnifiedSearchActivity" />
+        <activity android:name=".firebase.MainActivity"/>
+        <activity android:name=".MainActivityNavigation"/>
+        <activity android:name=".GoogleActivity"/>
+        <activity android:name=".FingerprintActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".UnifiedSearch.UnifiedSearchActivity">
-        </activity>
+            </activity>
+        <activity android:name=".firebase.SignupActivity" />
+        <activity android:name=".firebase.ResetPasswordActivity"></activity>
     </application>
 
 </manifest>
